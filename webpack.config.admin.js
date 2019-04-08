@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const applicationConfig = require('./config/admin.js');
-const applicationText = require(`./locales/${applicationConfig.language}.json`);
+const applicationText = require(`./config/${applicationConfig.language}.json`);
 
 module.exports = {
 	entry: {

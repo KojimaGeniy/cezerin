@@ -3,9 +3,7 @@ import helmet from 'helmet';
 import responseTime from 'response-time';
 import path from 'path';
 import cookieParser from 'cookie-parser';
-import winston from 'winston';
 import settings from '../../../config/server';
-import logger from './logger';
 import robotsRendering from './robotsRendering';
 import sitemapRendering from './sitemapRendering';
 import redirects from './redirects';
@@ -50,5 +48,5 @@ app.get('*', pageRendering);
 
 const server = app.listen(settings.storeListenPort, () => {
 	const serverAddress = server.address();
-	winston.info(`Store running at http://localhost:${serverAddress.port}`);
+	console.info(`Store running at http://localhost:${serverAddress.port}`);
 });

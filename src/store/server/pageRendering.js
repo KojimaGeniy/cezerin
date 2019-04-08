@@ -1,4 +1,3 @@
-import winston from 'winston';
 import CezerinClient from 'cezerin-client';
 import React from 'react';
 import { StaticRouter } from 'react-router';
@@ -44,11 +43,11 @@ const getReferrerCookieOptions = isHttps => ({
 });
 
 const renderError = (req, res, err) => {
-	winston.error(
+	console.error(
 		`Error on page rendering\n\tpath: ${req.url}\n\terror: ${err.toString()}`
 	);
 	if (err.stack) {
-		winston.error(err.stack);
+		console.error(err.stack);
 	}
 	res.status(500).send(err.message ? err.message : err);
 };

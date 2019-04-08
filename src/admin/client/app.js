@@ -18,7 +18,6 @@ import OrderStatuses from 'routes/orders/statuses';
 import Pages from 'routes/pages';
 import PagesDetails from 'routes/pages/edit';
 import Settings from 'routes/settings';
-import Apps from 'routes/apps';
 import Files from 'routes/files';
 
 import {
@@ -102,7 +101,6 @@ export default () => (
 						<Route path="/admin/pages/add" exact component={PagesDetails} />
 						<Route path="/admin/pages/:pageId" component={PagesDetails} />
 						<Route path="/admin/settings" component={Settings} />
-						<Route path="/admin/apps" component={Apps} />
 						<Route path="/admin/files" exact component={Files} />
 						<Route component={NotFound} />
 					</Switch>

@@ -16,8 +16,6 @@ import SecurityTokensRoute from './routes/tokens';
 import NotificationsRoute from './routes/notifications';
 import RedirectsRoute from './routes/redirects';
 import FilesRoute from './routes/files';
-import AppsRoute from './routes/apps';
-import WebhooksRoute from './routes/webhooks';
 
 const apiRouter = express.Router();
 
@@ -38,7 +36,5 @@ new SecurityTokensRoute(apiRouter);
 new NotificationsRoute(apiRouter);
 new RedirectsRoute(apiRouter);
 new FilesRoute(apiRouter);
-new AppsRoute(apiRouter);
-new WebhooksRoute(apiRouter);
 
 export default apiRouter;

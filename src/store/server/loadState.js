@@ -1,5 +1,4 @@
 import api from './api';
-import queryString from 'query-string';
 import {
 	getParsedProductFilter,
 	getProductFilterForCategory,

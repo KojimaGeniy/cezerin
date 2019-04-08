@@ -1,7 +1,5 @@
-import winston from 'winston';
 import url from 'url';
 import { MongoClient } from 'mongodb';
-import logger from './lib/logger';
 import settings from './lib/settings';
 
 const mongodbConnection = settings.mongodbServerUrl;
@@ -21,7 +19,7 @@ const addPage = async (db, pageObject) => {
 	const docExists = +count > 0;
 	if (!docExists) {
 		await db.collection('pages').insertOne(pageObject);
-		winston.info(`- Added page: /${pageObject.slug}`);
+		console.info(`- Added page: /${pageObject.slug}`);
 	}
 };
 
@@ -138,7 +136,7 @@ const addAllProducts = async db => {
 			]
 		});
 
-		winston.info('- Added products');
+		console.info('- Added products');
 	}
 };
 
@@ -204,7 +202,7 @@ const addEmailTemplates = async db => {
 		  </div>`
 		});
 
-		winston.info('- Added email template for Order Confirmation');
+		console.info('- Added email template for Order Confirmation');
 	}
 };
 
@@ -227,7 +225,7 @@ const addShippingMethods = async db => {
 				weight_total_max: 0
 			}
 		});
-		winston.info('- Added shipping method');
+		console.info('- Added shipping method');
 	}
 };
 
@@ -247,7 +245,7 @@ const addPaymentMethods = async db => {
 				subtotal_max: 0
 			}
 		});
-		winston.info('- Added payment method');
+		console.info('- Added payment method');
 	}
 };
 
@@ -263,7 +261,7 @@ const createAllIndexes = async db => {
 	if (pagesIndexes.length === 1) {
 		await createIndex(db, 'pages', { enabled: 1 });
 		await createIndex(db, 'pages', { slug: 1 });
-		winston.info('- Created indexes for: pages');
+		console.info('- Created indexes for: pages');
 	}
 
 	const productCategoriesIndexes = await db
@@ -274,7 +272,7 @@ const createAllIndexes = async db => {
 	if (productCategoriesIndexes.length === 1) {
 		await createIndex(db, 'productCategories', { enabled: 1 });
 		await createIndex(db, 'productCategories', { slug: 1 });
-		winston.info('- Created indexes for: productCategories');
+		console.info('- Created indexes for: productCategories');
 	}
 
 	const productsIndexes = await db
@@ -300,7 +298,7 @@ const createAllIndexes = async db => {
 			},
 			{ default_language: DEFAULT_LANGUAGE, name: 'textIndex' }
 		);
-		winston.info('- Created indexes for: products');
+		console.info('- Created indexes for: products');
 	}
 
 	const customersIndexes = await db
@@ -321,7 +319,7 @@ const createAllIndexes = async db => {
 			},
 			{ default_language: DEFAULT_LANGUAGE, name: 'textIndex' }
 		);
-		winston.info('- Created indexes for: customers');
+		console.info('- Created indexes for: customers');
 	}
 
 	const ordersIndexes = await db
@@ -344,7 +342,7 @@ const createAllIndexes = async db => {
 			},
 			{ default_language: DEFAULT_LANGUAGE, name: 'textIndex' }
 		);
-		winston.info('- Created indexes for: orders');
+		console.info('- Created indexes for: orders');
 	}
 };
 
@@ -364,7 +362,7 @@ const addUser = async (db, userEmail) => {
 				email: userEmail,
 				scopes: ['admin']
 			});
-			winston.info(`- Added token with email: ${userEmail}`);
+			console.info(`- Added token with email: ${userEmail}`);
 		}
 	}
 };
@@ -380,7 +378,7 @@ const addSettings = async (db, { domain }) => {
 			},
 			{ upsert: true }
 		);
-		winston.info(`- Set domain: ${domain}`);
+		console.info(`- Set domain: ${domain}`);
 	}
 };
 
@@ -394,9 +392,9 @@ const addSettings = async (db, { domain }) => {
 			CONNECT_OPTIONS
 		);
 		db = client.db(dbName);
-		winston.info(`Successfully connected to ${mongodbConnection}`);
+		console.info(`Successfully connected to ${mongodbConnection}`);
 	} catch (e) {
-		winston.error(`MongoDB connection was failed. ${e.message}`);
+		console.error(`MongoDB connection was failed. ${e.message}`);
 		return;
 	}
 

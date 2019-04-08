@@ -1,8 +1,6 @@
 import { ObjectID } from 'mongodb';
 import { db } from '../../lib/mongo';
-import utils from '../../lib/utils';
 import parse from '../../lib/parse';
-import webhooks from '../../lib/webhooks';
 import OrdersService from './orders';
 
 class OrdertTansactionsService {
@@ -27,10 +25,6 @@ class OrdertTansactionsService {
 		);
 
 		const order = await OrdersService.getSingleOrder(order_id);
-		await webhooks.trigger({
-			event: webhooks.events.TRANSACTION_CREATED,
-			payload: order
-		});
 		return order;
 	}
 
@@ -53,10 +47,6 @@ class OrdertTansactionsService {
 		);
 
 		const order = await OrdersService.getSingleOrder(order_id);
-		await webhooks.trigger({
-			event: webhooks.events.TRANSACTION_UPDATED,
-			payload: order
-		});
 		return order;
 	}
 
@@ -81,10 +71,6 @@ class OrdertTansactionsService {
 		);
 
 		const order = await OrdersService.getSingleOrder(order_id);
-		await webhooks.trigger({
-			event: webhooks.events.TRANSACTION_DELETED,
-			payload: order
-		});
 		return order;
 	}
 

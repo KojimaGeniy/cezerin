@@ -1,5 +1,4 @@
 import sm from 'sitemap';
-import winston from 'winston';
 import api from './api';
 
 const SITEMAP_EXCLUDE_PATH = [
@@ -36,7 +35,7 @@ const sitemapRendering = (req, res) => {
 		const sitemap = sm.createSitemap({ hostname, urls });
 		sitemap.toXML((err, xml) => {
 			if (err) {
-				winston.error(err.message ? err.message : err);
+				console.error(err.message ? err.message : err);
 				res.status(500).end();
 			} else {
 				res.header('Content-Type', 'application/xml');

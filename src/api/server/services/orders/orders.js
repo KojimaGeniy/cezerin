@@ -1,14 +1,10 @@
 import { ObjectID } from 'mongodb';
-import winston from 'winston';
 import handlebars from 'handlebars';
 import settings from '../../lib/settings';
 import { db } from '../../lib/mongo';
-import utils from '../../lib/utils';
 import parse from '../../lib/parse';
-import webhooks from '../../lib/webhooks';
 import dashboardWebSocket from '../../lib/dashboardWebSocket';
 import mailer from '../../lib/mailer';
-import ProductsService from '../products/products';
 import CustomersService from '../customers/customers';
 import OrderStatusesService from './orderStatuses';
 import PaymentMethodsLightService from './paymentMethodsLight';
@@ -254,12 +250,6 @@ class OrdersService {
 			.collection('orders')
 			.updateOne({ _id: orderObjectID }, { $set: orderData });
 		const updatedOrder = await this.getSingleOrder(id);
-		if (updatedOrder.draft === false) {
-			await webhooks.trigger({
-				event: webhooks.events.ORDER_UPDATED,
-				payload: updatedOrder
-			});
-		}
 		await this.updateCustomerStatistics(updatedOrder.customer_id);
 		return updatedOrder;
 	}
@@ -270,10 +260,6 @@ class OrdersService {
 		}
 		const orderObjectID = new ObjectID(orderId);
 		const order = await this.getSingleOrder(orderId);
-		await webhooks.trigger({
-			event: webhooks.events.ORDER_DELETED,
-			payload: order
-		});
 		const deleteResponse = await db
 			.collection('orders')
 			.deleteOne({ _id: orderObjectID });
@@ -698,10 +684,6 @@ class OrdersService {
 		});
 
 		await Promise.all([
-			webhooks.trigger({
-				event: webhooks.events.ORDER_CREATED,
-				payload: order
-			}),
 			this.sendAllMails(order.email, copyTo, subject, body),
 			ProductStockService.handleOrderCheckout(orderId)
 		]);

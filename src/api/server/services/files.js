@@ -55,7 +55,7 @@ class FilesService {
 		});
 	}
 
-	uploadFile(req, res, next) {
+	uploadFile(req, res) {
 		const uploadDir = CONTENT_PATH;
 
 		let form = new formidable.IncomingForm(),

@@ -1,4 +1,3 @@
-import winston from 'winston';
 import nodemailer from 'nodemailer';
 import smtpTransport from 'nodemailer-smtp-transport';
 import settings from './settings';
@@ -67,10 +66,10 @@ const send = async message => {
 
 	try {
 		const result = await sendMail(smtp, message);
-		winston.info('Email sent', result);
+		console.info('Email sent', result);
 		return true;
 	} catch (e) {
-		winston.error('Email send failed', e);
+		console.error('Email send failed', e);
 		return false;
 	}
 };

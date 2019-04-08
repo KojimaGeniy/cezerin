@@ -1,8 +1,6 @@
 import { ObjectID } from 'mongodb';
 import { db } from '../../lib/mongo';
-import utils from '../../lib/utils';
 import parse from '../../lib/parse';
-import webhooks from '../../lib/webhooks';
 import CustomerGroupsService from './customerGroups';
 
 class CustomersService {
@@ -100,10 +98,6 @@ class CustomersService {
 			.insertMany([customer]);
 		const newCustomerId = insertResponse.ops[0]._id.toString();
 		const newCustomer = await this.getSingleCustomer(newCustomerId);
-		await webhooks.trigger({
-			event: webhooks.events.CUSTOMER_CREATED,
-			payload: newCustomer
-		});
 		return newCustomer;
 	}
 
@@ -138,10 +132,6 @@ class CustomersService {
 		);
 
 		const updatedCustomer = await this.getSingleCustomer(id);
-		await webhooks.trigger({
-			event: webhooks.events.CUSTOMER_UPDATED,
-			payload: updatedCustomer
-		});
 		return updatedCustomer;
 	}
 
@@ -169,10 +159,6 @@ class CustomersService {
 		const deleteResponse = await db
 			.collection('customers')
 			.deleteOne({ _id: customerObjectID });
-		await webhooks.trigger({
-			event: webhooks.events.CUSTOMER_DELETED,
-			payload: customer
-		});
 		return deleteResponse.deletedCount > 0;
 	}
 

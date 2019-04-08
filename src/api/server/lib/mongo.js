@@ -1,4 +1,3 @@
-import winston from 'winston';
 import url from 'url';
 import { MongoClient } from 'mongodb';
 import settings from './settings';
@@ -15,11 +14,11 @@ const CONNECT_OPTIONS = {
 };
 
 const onClose = () => {
-	winston.info('MongoDB connection was closed');
+	console.info('MongoDB connection was closed');
 };
 
 const onReconnect = () => {
-	winston.info('MongoDB reconnected');
+	console.info('MongoDB reconnected');
 };
 
 export let db = null;
@@ -30,7 +29,7 @@ const connectWithRetry = () => {
 		CONNECT_OPTIONS,
 		(err, client) => {
 			if (err) {
-				winston.error(
+				console.error(
 					`MongoDB connection was failed: ${err.message}`,
 					err.message
 				);
@@ -39,7 +38,7 @@ const connectWithRetry = () => {
 				db = client.db(dbName);
 				db.on('close', onClose);
 				db.on('reconnect', onReconnect);
-				winston.info('MongoDB connected successfully');
+				console.info('MongoDB connected successfully');
 			}
 		}
 	);

@@ -1,10 +1,4 @@
-import {
-	PAGE,
-	PRODUCT_CATEGORY,
-	PRODUCT,
-	RESERVED,
-	SEARCH
-} from '../pageTypes';
+import { PAGE, PRODUCT, SEARCH } from '../pageTypes';
 import * as googleAnalytics from './googleAnalytics';
 
 export const onPageLoad = ({ state }) => {
