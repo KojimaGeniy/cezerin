@@ -19,7 +19,6 @@ import PageHead from 'modules/pages/edit/head';
 import PageListHead from 'modules/pages/list/head';
 import TokenListHead from 'modules/settings/tokens/list/head';
 
-import FileListHead from 'modules/files/list/head';
 import DrawerMenu from './drawer';
 
 import FontIcon from 'material-ui/FontIcon';
@@ -436,9 +435,6 @@ export default class AppBarTop extends React.Component {
 				</Link>
 			);
 			rightElements = <PageHead />;
-		} else if (pathname === '/admin/files') {
-			title = messages.files;
-			rightElements = <FileListHead />;
 		} else if (pathname === '/admin/settings/tokens') {
 			title = messages.settings_tokens;
 			rightElements = <TokenListHead />;

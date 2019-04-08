@@ -18,7 +18,6 @@ import OrderStatuses from 'routes/orders/statuses';
 import Pages from 'routes/pages';
 import PagesDetails from 'routes/pages/edit';
 import Settings from 'routes/settings';
-import Files from 'routes/files';
 
 import {
 	blue700,
@@ -101,7 +100,6 @@ export default () => (
 						<Route path="/admin/pages/add" exact component={PagesDetails} />
 						<Route path="/admin/pages/:pageId" component={PagesDetails} />
 						<Route path="/admin/settings" component={Settings} />
-						<Route path="/admin/files" exact component={Files} />
 						<Route component={NotFound} />
 					</Switch>
 				</div>

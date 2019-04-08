@@ -37,11 +37,6 @@ const menuItems = [
 		icon: 'description'
 	},
 	{
-		title: messages.files,
-		url: '/admin/files',
-		icon: 'folder'
-	},
-	{
 		title: '-',
 		url: 'settings'
 	},

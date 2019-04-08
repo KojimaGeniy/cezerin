@@ -1,0 +1,16 @@
+<svg version="1.1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1256" height="883.0000007152553" enable-background="new 0 0 1300 1300" xml:space="preserve" style=""><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none" style="" class=""/>
+<title>Vector 1</title>
+<desc>Created with Sketch.</desc>
+
+<g class="currentLayer" style=""><title>Layer 1</title><g id="Page-1" sketch:type="MSPage" class="">
+	<g id="solidity" sketch:type="MSLayerGroup">
+		<g id="Group" sketch:type="MSShapeGroup">
+			<path id="Shape" opacity="0.45" enable-background="new    " d="M775.4386392831802,36.641334533691406 L644.7346597909927,268.94332122802734 H383.5086771249771 l130.61399841308594,-232.302001953125 H775.4386392831802 "/>
+			<path id="Shape_1_" opacity="0.6" enable-background="new    " d="M644.7346597909927,268.94332122802734 h261.3179931640625 L775.4386392831802,36.641334533691406 H514.122660279274 L644.7346597909927,268.94332122802734 z"/>
+			<path id="Shape_2_" opacity="0.8" enable-background="new    " d="M514.122660279274,501.15535736083984 L644.7346597909927,268.94332122802734 L514.122660279274,36.641334533691406 L383.5086771249771,268.94332122802734 L514.122660279274,501.15535736083984 z"/>
+			<path id="Shape_3_" opacity="0.45" enable-background="new    " d="M515.3876749277115,849.6083602905273 l130.70399475097656,-232.30299377441406 h261.3179931640625 L776.7046304941177,849.6083602905273 H515.3876749277115 "/>
+			<path id="Shape_4_" opacity="0.6" enable-background="new    " d="M646.090677857399,617.3063583374023 H384.7736612558365 l130.61300659179688,232.30299377441406 h261.3169860839844 L646.090677857399,617.3063583374023 z"/>
+			<path id="Shape_5_" opacity="0.8" enable-background="new    " d="M776.7046304941177,385.09432220458984 L646.090677857399,617.3063583374023 l130.61399841308594,232.30299377441406 l130.70399475097656,-232.30299377441406 L776.7046304941177,385.09432220458984 z"/>
+		</g>
+	</g>
+</g></g></svg>
