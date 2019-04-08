@@ -1,7 +1,6 @@
 import React from 'react';
 import api from '../../../lib/api';
 import PayPalCheckout from './PayPalCheckout';
-import LiqPay from './LiqPay';
 import StripeElements from './StripeElements';
 
 export default class PaymentForm extends React.Component {
@@ -68,16 +67,6 @@ export default class PaymentForm extends React.Component {
 					return (
 						<div className="payment-form">
 							<PayPalCheckout
-								formSettings={formSettings}
-								shopSettings={shopSettings}
-								onPayment={onPayment}
-							/>
-						</div>
-					);
-				case 'liqpay':
-					return (
-						<div className="payment-form">
-							<LiqPay
 								formSettings={formSettings}
 								shopSettings={shopSettings}
 								onPayment={onPayment}

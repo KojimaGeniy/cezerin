@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import messages from 'lib/text';
 import ProductCategoryHead from 'modules/productCategories/head/index';
-import CustomerGroupHead from 'modules/customerGroups/head/index';
 import CustomersHead from 'modules/customers/listHead/index';
 import CustomerHead from 'modules/customers/editHead/index';
 import ProductsHead from 'modules/products/listHead/index';
@@ -40,7 +39,6 @@ export default class AppBarTop extends React.Component {
 			productCategoryName,
 			productsSelectedCount,
 			customersSelectedCount,
-			customerGroupName,
 			ordersSelectedCount,
 			orderStatusName,
 			orderNumber
@@ -195,41 +193,11 @@ export default class AppBarTop extends React.Component {
 		} else if (pathname === '/admin/customers') {
 			title = messages.customers_title;
 
-			if (customerGroupName) {
-				title = (
-					<span>
-						{messages.customers_title}
-						<FontIcon
-							style={{ top: 6 }}
-							color="#fff"
-							className="material-icons"
-						>
-							chevron_right
-						</FontIcon>
-						{customerGroupName}
-					</span>
-				);
-			}
-
 			if (customersSelectedCount > 0) {
 				title = `${customersSelectedCount} ${messages.selected}`;
 			}
 
 			rightElements = <CustomersHead />;
-		} else if (pathname === '/admin/customers/groups') {
-			title = customerGroupName
-				? messages.customerGroups_titleEdit
-				: messages.customerGroups_title;
-			leftButton = (
-				<Link to="/admin/customers">
-					<IconButton>
-						<FontIcon color="#fff" className="material-icons">
-							arrow_back
-						</FontIcon>
-					</IconButton>
-				</Link>
-			);
-			rightElements = <CustomerGroupHead />;
 		} else if (pathname === '/admin/settings/email') {
 			title = messages.settings_emailSettings;
 		} else if (pathname === '/admin/settings/email/smtp') {

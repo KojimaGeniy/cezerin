@@ -112,10 +112,6 @@ const getFilter = (state, offset = 0) => {
 		filter.search = state.customers.search;
 	}
 
-	if (state.customerGroups.selectedId) {
-		filter.group_id = state.customerGroups.selectedId;
-	}
-
 	return filter;
 };
 

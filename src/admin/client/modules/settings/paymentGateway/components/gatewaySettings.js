@@ -1,19 +1,12 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 import { TextField, SelectField } from 'redux-form-material-ui';
-
-import { CustomToggle } from 'modules/shared/form';
-import messages from 'lib/text';
-import style from './style.css';
-import Checkbox from 'material-ui/Checkbox';
 import MenuItem from 'material-ui/MenuItem';
 
 const GatewaySettings = ({ gateway }) => {
 	switch (gateway) {
 		case 'paypal-checkout':
 			return <PayPalButton />;
-		case 'liqpay':
-			return <LiqPay />;
 		case 'stripe-elements':
 			return <StripeElements />;
 		default:
@@ -86,46 +79,6 @@ const PayPalButton = props => {
 				name="notify_url"
 				floatingLabelText="Notify URL"
 				hintText="https://<domain>/api/v1/notifications/paypal-checkout"
-				fullWidth={true}
-			/>
-		</div>
-	);
-};
-
-const LiqPay = props => {
-	return (
-		<div>
-			<Field
-				component={TextField}
-				name="public_key"
-				floatingLabelText="Public Key"
-				fullWidth={true}
-			/>
-
-			<Field
-				component={TextField}
-				name="private_key"
-				floatingLabelText="Private Key"
-				fullWidth={true}
-			/>
-
-			<Field
-				component={SelectField}
-				name="language"
-				floatingLabelText="Language"
-				fullWidth={true}
-				autoWidth={true}
-			>
-				<MenuItem value="ru" primaryText="Russian" />
-				<MenuItem value="uk" primaryText="Ukrainian" />
-				<MenuItem value="en" primaryText="English" />
-			</Field>
-
-			<Field
-				component={TextField}
-				name="server_url"
-				floatingLabelText="Server URL"
-				hintText="https://<domain>/api/v1/notifications/liqpay"
 				fullWidth={true}
 			/>
 		</div>

@@ -2,7 +2,6 @@ import OrdersService from '../services/orders/orders';
 import SettingsService from '../services/settings/settings';
 import PaymentGatewaysService from '../services/settings/paymentGateways';
 import PayPalCheckout from './PayPalCheckout';
-import LiqPay from './LiqPay';
 import StripeElements from './StripeElements';
 
 const getOptions = orderId => {
@@ -33,8 +32,6 @@ const getPaymentFormSettings = orderId => {
 		switch (options.gateway) {
 			case 'paypal-checkout':
 				return PayPalCheckout.getPaymentFormSettings(options);
-			case 'liqpay':
-				return LiqPay.getPaymentFormSettings(options);
 			case 'stripe-elements':
 				return StripeElements.getPaymentFormSettings(options);
 			default:
@@ -55,8 +52,6 @@ const paymentNotification = (req, res, gateway) => {
 		switch (gateway) {
 			case 'paypal-checkout':
 				return PayPalCheckout.paymentNotification(options);
-			case 'liqpay':
-				return LiqPay.paymentNotification(options);
 			default:
 				return Promise.reject('Invalid gateway');
 		}

@@ -1,7 +1,6 @@
 import { ObjectID } from 'mongodb';
 import { db } from '../../lib/mongo';
 import parse from '../../lib/parse';
-import CustomerGroupsService from './customerGroups';
 
 class CustomersService {
 	constructor() {}
@@ -49,7 +48,6 @@ class CustomersService {
 		const offset = parse.getNumberIfPositive(params.offset) || 0;
 
 		return Promise.all([
-			CustomerGroupsService.getGroups(),
 			db
 				.collection('customers')
 				.find(filter)
@@ -58,10 +56,8 @@ class CustomersService {
 				.limit(limit)
 				.toArray(),
 			db.collection('customers').countDocuments(filter)
-		]).then(([customerGroups, customers, customersCount]) => {
-			const items = customers.map(customer =>
-				this.changeProperties(customer, customerGroups)
-			);
+		]).then(([customers, customersCount]) => {
+			const items = customers.map(customer => this.changeProperties(customer));
 			const result = {
 				total_count: customersCount,
 				has_more: offset + items.length < customersCount,
@@ -254,19 +250,12 @@ class CustomersService {
 		return customer;
 	}
 
-	changeProperties(customer, customerGroups) {
+	changeProperties(customer) {
 		if (customer) {
 			customer.id = customer._id.toString();
 			delete customer._id;
 
-			const customerGroup = customer.group_id
-				? customerGroups.find(
-						group => group.id === customer.group_id.toString()
-				  )
-				: null;
-
-			customer.group_name =
-				customerGroup && customerGroup.name ? customerGroup.name : '';
+			customer.group_name = '';
 
 			if (customer.addresses && customer.addresses.length === 1) {
 				customer.billing = customer.shipping = customer.addresses[0];

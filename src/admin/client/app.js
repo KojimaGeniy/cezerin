@@ -11,7 +11,6 @@ import ProductDetails from 'routes/products/edit';
 import ProductCategories from 'routes/products/categories';
 import Customers from 'routes/customers';
 import CustomerDetails from 'routes/customers/edit';
-import CustomerGroups from 'routes/customers/groups';
 import Orders from 'routes/orders';
 import OrderDetails from 'routes/orders/edit';
 import OrderStatuses from 'routes/orders/statuses';
@@ -82,11 +81,6 @@ export default () => (
 							component={OrderDetails}
 						/>
 						<Route path="/admin/customers" exact component={Customers} />
-						<Route
-							path="/admin/customers/groups"
-							exact
-							component={CustomerGroups}
-						/>
 						<Route
 							path="/admin/customer/:customerId"
 							exact

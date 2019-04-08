@@ -2,15 +2,10 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { TextField, SelectField } from 'redux-form-material-ui';
 
-import { CustomToggle } from 'modules/shared/form';
-import api from 'lib/api';
 import messages from 'lib/text';
 import style from './style.css';
 
-import Divider from 'material-ui/Divider';
-import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
-import MenuItem from 'material-ui/MenuItem';
 
 const validate = values => {
 	const errors = {};
@@ -28,15 +23,6 @@ const validate = values => {
 class CustomerEditForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			groups: []
-		};
-	}
-
-	componentDidMount() {
-		api.customerGroups.list().then(({ status, json }) => {
-			this.setState({ groups: json });
-		});
 	}
 
 	render() {
@@ -47,17 +33,6 @@ class CustomerEditForm extends React.Component {
 			initialValues,
 			onCancel
 		} = this.props;
-
-		let groupItems = this.state.groups.map((item, index) => (
-			<MenuItem key={index} value={item.id} primaryText={item.name} />
-		));
-		groupItems.push(
-			<MenuItem
-				key="none"
-				value={null}
-				primaryText={messages.customers_noGroup}
-			/>
-		);
 
 		return (
 			<form
@@ -76,14 +51,6 @@ class CustomerEditForm extends React.Component {
 							floatingLabelText={messages.fullName}
 						/>
 					</div>
-					<Field
-						component={SelectField}
-						fullWidth={true}
-						name="group_id"
-						floatingLabelText={messages.group}
-					>
-						{groupItems}
-					</Field>
 					<div>
 						<Field
 							component={TextField}
