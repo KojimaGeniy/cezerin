@@ -1,11 +1,9 @@
 import * as t from './actionTypes';
-import { PAGE, PRODUCT_CATEGORY, PRODUCT, RESERVED, SEARCH } from './pageTypes';
+import { PAGE, PRODUCT_CATEGORY, PRODUCT, SEARCH } from './pageTypes';
 import queryString from 'query-string';
 import { animateScroll } from 'react-scroll';
 import api from '../client/api';
 import * as analytics from './analytics';
-
-const requestProduct = () => ({ type: t.PRODUCT_REQUEST });
 
 const receiveProduct = product => ({ type: t.PRODUCT_RECEIVE, product });
 

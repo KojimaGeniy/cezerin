@@ -1,10 +1,8 @@
 import jwt from 'jsonwebtoken';
 import expressJwt from 'express-jwt';
 import settings from './settings';
-import SecurityTokensService from '../services/security/tokens';
 
 const DEVELOPER_MODE = settings.developerMode === true;
-const SET_TOKEN_AS_REVOKEN_ON_EXCEPTION = true;
 
 const PATHS_WITH_OPEN_ACCESS = [
 	'/api/v1/authorize',
@@ -71,23 +69,11 @@ const verifyToken = token => {
 	});
 };
 
-const checkTokenInBlacklistCallback = async (req, payload, done) => {
-	try {
-		const jti = payload.jti;
-		const blacklist = await SecurityTokensService.getTokensBlacklist();
-		const tokenIsRevoked = blacklist.includes(jti);
-		return done(null, tokenIsRevoked);
-	} catch (e) {
-		done(e, SET_TOKEN_AS_REVOKEN_ON_EXCEPTION);
-	}
-};
-
 const applyMiddleware = app => {
 	if (DEVELOPER_MODE === false) {
 		app.use(
 			expressJwt({
-				secret: settings.jwtSecretKey,
-				isRevoked: checkTokenInBlacklistCallback
+				secret: settings.jwtSecretKey
 			}).unless({ path: PATHS_WITH_OPEN_ACCESS })
 		);
 	}

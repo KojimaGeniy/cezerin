@@ -16,7 +16,6 @@ import ShippingMethodHead from 'modules/settings/shippingEdit/head';
 import ShippingMethodListHead from 'modules/settings/shipping/head';
 import PageHead from 'modules/pages/edit/head';
 import PageListHead from 'modules/pages/list/head';
-import TokenListHead from 'modules/settings/tokens/list/head';
 
 import DrawerMenu from './drawer';
 
@@ -392,31 +391,6 @@ export default class AppBarTop extends React.Component {
 				</Link>
 			);
 			rightElements = <PageHead />;
-		} else if (pathname === '/admin/settings/tokens') {
-			title = messages.settings_tokens;
-			rightElements = <TokenListHead />;
-		} else if (pathname === '/admin/settings/tokens/add') {
-			title = messages.settings_addToken;
-			leftButton = (
-				<Link to="/admin/settings/tokens">
-					<IconButton>
-						<FontIcon color="#fff" className="material-icons">
-							arrow_back
-						</FontIcon>
-					</IconButton>
-				</Link>
-			);
-		} else if (pathname.startsWith('/admin/settings/tokens/')) {
-			title = messages.settings_editToken;
-			leftButton = (
-				<Link to="/admin/settings/tokens">
-					<IconButton>
-						<FontIcon color="#fff" className="material-icons">
-							arrow_back
-						</FontIcon>
-					</IconButton>
-				</Link>
-			);
 		} else if (pathname === '/admin/apps/account') {
 			title = messages.account;
 			leftButton = (

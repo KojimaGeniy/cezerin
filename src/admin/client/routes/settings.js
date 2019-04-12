@@ -12,8 +12,6 @@ import Shipping from 'modules/settings/shipping';
 import ShippingEdit from 'modules/settings/shippingEdit';
 import Payments from 'modules/settings/payments';
 import PaymentsEdit from 'modules/settings/paymentsEdit';
-import Tokens from 'modules/settings/tokens/list';
-import TokensEdit from 'modules/settings/tokens/edit';
 import Email from 'modules/settings/email';
 import EmailTemplate from 'modules/settings/emailTemplates';
 import Checkout from 'modules/settings/checkout';
@@ -96,16 +94,6 @@ const SettingsMenu = () => (
 				leftIcon={<FontIcon className="material-icons">email</FontIcon>}
 			/>
 		</NavLink>
-		<NavLink
-			style={styles.link}
-			activeStyle={styles.linkActive}
-			to="/admin/settings/tokens"
-		>
-			<ListItem
-				primaryText={messages.settings_tokens}
-				leftIcon={<FontIcon className="material-icons">vpn_key</FontIcon>}
-			/>
-		</NavLink>
 	</List>
 );
 
@@ -139,16 +127,6 @@ const Settings = ({ match }) => {
 					<Route
 						path="/admin/settings/payments/:methodId"
 						component={PaymentsEdit}
-					/>
-					<Route path="/admin/settings/tokens" exact component={Tokens} />
-					<Route
-						path="/admin/settings/tokens/add"
-						exact
-						component={TokensEdit}
-					/>
-					<Route
-						path="/admin/settings/tokens/:tokenId"
-						component={TokensEdit}
 					/>
 					<Route path="/admin/settings/email" exact component={Email} />
 					<Route
