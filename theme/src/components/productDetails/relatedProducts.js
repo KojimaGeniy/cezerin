@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { themeSettings, text } from '../../lib/settings';
 import CustomProducts from '../products/custom';
 

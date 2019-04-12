@@ -200,17 +200,6 @@ export default class AppBarTop extends React.Component {
 			rightElements = <CustomersHead />;
 		} else if (pathname === '/admin/settings/email') {
 			title = messages.settings_emailSettings;
-		} else if (pathname === '/admin/settings/email/smtp') {
-			title = messages.settings_smtpSettings;
-			leftButton = (
-				<Link to="/admin/settings/email">
-					<IconButton>
-						<FontIcon color="#fff" className="material-icons">
-							arrow_back
-						</FontIcon>
-					</IconButton>
-				</Link>
-			);
 		} else if (
 			pathname === '/admin/settings/email/templates/order_confirmation'
 		) {

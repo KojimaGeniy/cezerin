@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { themeSettings, text } from '../../lib/settings';
 
 export default class SearchBox extends React.Component {

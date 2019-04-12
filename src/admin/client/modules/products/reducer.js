@@ -3,7 +3,6 @@ import * as t from './actionTypes';
 const initialState = {
 	editProductImages: null,
 	editProductOptions: null,
-	editProductVariants: null,
 	editProduct: null,
 	items: [],
 	selected: [],
@@ -40,8 +39,7 @@ export default (state = initialState, action) => {
 				isUpdating: false,
 				editProduct: null,
 				editProductImages: null,
-				editProductOptions: null,
-				editProductVariants: null
+				editProductOptions: null
 			});
 		case t.PRODUCT_DETAIL_FAILURE:
 			return Object.assign({}, state, {
@@ -98,10 +96,6 @@ export default (state = initialState, action) => {
 		case t.PRODUCT_UPDATE_REQUEST:
 			return Object.assign({}, state, {
 				isUpdating: true
-			});
-		case t.PRODUCT_VARIANTS_RECEIVE:
-			return Object.assign({}, state, {
-				editProductVariants: action.variants
 			});
 		case t.PRODUCT_OPTIONS_RECEIVE:
 			return Object.assign({}, state, {

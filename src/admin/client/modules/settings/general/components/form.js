@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
-import { TextField, SelectField, DatePicker } from 'redux-form-material-ui';
+import { TextField, SelectField } from 'redux-form-material-ui';
 
 import { CustomToggle } from 'modules/shared/form';
 import messages from 'lib/text';
@@ -11,7 +11,6 @@ import data from 'lib/data';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
-import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FontIcon from 'material-ui/FontIcon';
 import { List, ListItem } from 'material-ui/List';
@@ -398,46 +397,6 @@ class GeneralSettings extends React.Component {
 								>
 									{countryItems}
 								</Field>
-							</div>
-						</div>
-
-						<Divider
-							style={{
-								marginTop: 10,
-								marginBottom: 10
-							}}
-						/>
-
-						<div className="row between-xs middle-xs">
-							<div className="col-xs-12 col-sm-6">
-								{messages.settings_defaultShippingState}
-							</div>
-							<div className="col-xs-12 col-sm-6">
-								<Field
-									component={TextField}
-									fullWidth={true}
-									name="default_shipping_state"
-								/>
-							</div>
-						</div>
-
-						<Divider
-							style={{
-								marginTop: 10,
-								marginBottom: 10
-							}}
-						/>
-
-						<div className="row between-xs middle-xs">
-							<div className="col-xs-12 col-sm-6">
-								{messages.settings_defaultShippingCity}
-							</div>
-							<div className="col-xs-12 col-sm-6">
-								<Field
-									component={TextField}
-									fullWidth={true}
-									name="default_shipping_city"
-								/>
 							</div>
 						</div>
 

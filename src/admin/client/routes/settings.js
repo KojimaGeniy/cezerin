@@ -15,7 +15,6 @@ import PaymentsEdit from 'modules/settings/paymentsEdit';
 import Tokens from 'modules/settings/tokens/list';
 import TokensEdit from 'modules/settings/tokens/edit';
 import Email from 'modules/settings/email';
-import Smtp from 'modules/settings/smtp';
 import EmailTemplate from 'modules/settings/emailTemplates';
 import Checkout from 'modules/settings/checkout';
 import CheckoutFields from 'modules/settings/checkoutFields';
@@ -152,7 +151,6 @@ const Settings = ({ match }) => {
 						component={TokensEdit}
 					/>
 					<Route path="/admin/settings/email" exact component={Email} />
-					<Route path="/admin/settings/email/smtp" component={Smtp} />
 					<Route
 						path="/admin/settings/email/templates/:templateName"
 						component={EmailTemplate}

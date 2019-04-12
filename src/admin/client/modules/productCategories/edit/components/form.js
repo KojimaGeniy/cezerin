@@ -7,7 +7,6 @@ import { CustomToggle } from 'modules/shared/form';
 import ImageUpload from 'modules/shared/imageUpload';
 import messages from 'lib/text';
 import style from './style.css';
-import settings from 'lib/settings';
 import api from 'lib/api';
 
 import Paper from 'material-ui/Paper';

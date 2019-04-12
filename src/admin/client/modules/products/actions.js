@@ -1,6 +1,5 @@
 import * as t from './actionTypes';
 import api from 'lib/api';
-import messages from 'lib/text';
 import moment from 'moment';
 
 function requestProduct() {
@@ -27,13 +26,6 @@ function receiveImages(images) {
 	return {
 		type: t.PRODUCT_IMAGES_RECEIVE,
 		images
-	};
-}
-
-function receiveVariants(variants) {
-	return {
-		type: t.PRODUCT_VARIANTS_RECEIVE,
-		variants
 	};
 }
 

@@ -1,13 +1,10 @@
 import React, { Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
-import * as helper from '../../lib/helper';
-import { themeSettings, text } from '../../lib/settings';
+import { themeSettings } from '../../lib/settings';
 import Disqus from '../comments/disqus';
 import ViewedProducts from '../products/viewed';
 import Breadcrumbs from './breadcrumbs';
 import DiscountCountdown from './discountCountdown';
 import AddToCartButton from './addToCartButton';
-import Attributes from './attributes';
 import Gallery from './gallery';
 import Options from './options';
 import Price from './price';
@@ -168,9 +165,6 @@ export default class ProductDetails extends React.Component {
 								<div className="columns">
 									<div className="column is-7">
 										<Description description={product.description} />
-									</div>
-									<div className="column is-5">
-										<Attributes attributes={product.attributes} />
 									</div>
 								</div>
 							</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { TextField, SelectField } from 'redux-form-material-ui';
+import { TextField } from 'redux-form-material-ui';
 
 import messages from 'lib/text';
 import style from './style.css';
@@ -18,7 +18,7 @@ class EmailTemplate extends React.Component {
 	}
 
 	render() {
-		let { handleSubmit, pristine, submitting, initialValues } = this.props;
+		let { handleSubmit, pristine, submitting } = this.props;
 
 		return (
 			<form

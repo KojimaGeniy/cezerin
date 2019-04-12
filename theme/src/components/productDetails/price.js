@@ -1,6 +1,6 @@
 import React from 'react';
 import * as helper from '../../lib/helper';
-import { themeSettings, text } from '../../lib/settings';
+import { themeSettings } from '../../lib/settings';
 
 const FormattedCurrency = ({ number, settings }) =>
 	helper.formatCurrency(number, settings);
@@ -16,7 +16,7 @@ const NewAndOldPrices = ({ newPrice, oldPrice, settings }) => (
 	</div>
 );
 
-const Price = ({ product, variant, isAllOptionsSelected, settings }) => {
+const Price = ({ product, settings }) => {
 	let priceStyle = {};
 	if (
 		themeSettings.details_price_size &&
@@ -34,11 +34,7 @@ const Price = ({ product, variant, isAllOptionsSelected, settings }) => {
 	let price = 0;
 	let oldPrice = 0;
 
-	if (product.variable && variant && variant.price > 0) {
-		price = variant.price;
-	} else {
-		price = product.price;
-	}
+	price = product.price;
 
 	if (product.on_sale) {
 		oldPrice = product.regular_price;
