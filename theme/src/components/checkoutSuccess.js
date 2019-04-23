@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import { text } from '../lib/settings';
 import * as helper from '../lib/helper';
 
@@ -105,12 +104,16 @@ const CheckoutSuccess = ({
 	checkoutFields
 }) => {
 	if (order && order.items && order.items.length > 0) {
+		console.log('Order in comp brotha!', order);
+		const link = `https://ipfs.infura.io/ipfs/${order.ipfs[0].hash}`;
 		return (
 			<div className="checkout-success-details">
 				<h1 className="checkout-success-title">
 					<img src="/assets/images/success.svg" alt="" />
 					<br />
 					{text.checkoutSuccessTitle}
+					<br />
+					IPFS hash: <a href={link}>{order.ipfs[0].hash}</a>
 				</h1>
 
 				<div
@@ -177,8 +180,10 @@ const CheckoutSuccess = ({
 				</div>
 			</div>
 		);
+		// })
+	} else {
+		return <div className="has-text-centered">{text.cartEmpty}</div>;
 	}
-	return <div className="has-text-centered">{text.cartEmpty}</div>;
 };
 
 CheckoutSuccess.propTypes = {

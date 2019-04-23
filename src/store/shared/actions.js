@@ -5,6 +5,13 @@ import { animateScroll } from 'react-scroll';
 import api from '../client/api';
 import * as analytics from './analytics';
 
+const ipfsClient = require('ipfs-http-client');
+const ipfs = ipfsClient({
+	host: 'ipfs.infura.io',
+	port: 5001,
+	protocol: 'https'
+});
+
 const receiveProduct = product => ({ type: t.PRODUCT_RECEIVE, product });
 
 export const fetchProducts = () => async (dispatch, getState) => {
@@ -212,6 +219,9 @@ export const checkout = (cart, history) => async (dispatch, getState) => {
 
 	const response = await api.ajax.cart.checkout();
 	const order = response.json;
+	const content = ipfsClient.Buffer.from(JSON.stringify(order));
+	let receipt = await ipfs.add(content);
+	order.ipfs = receipt;
 	dispatch(receiveCheckout(order));
 	history.push('/checkout-success');
 	analytics.checkoutSuccess({ order: order });
